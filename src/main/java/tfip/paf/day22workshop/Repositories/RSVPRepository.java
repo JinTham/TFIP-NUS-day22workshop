@@ -67,8 +67,8 @@ public class RSVPRepository {
         return count;
     }
 
-    public Integer[] batchUpdate(List<RSVP> rsvps) {
-        jdbcTemplate.batchUpdate(SQLinsert, new BatchPreparedStatementSetter() {
+    public int[] batchUpdate(List<RSVP> rsvps) {
+        return jdbcTemplate.batchUpdate(SQLinsert, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setString(1,rsvps.get(i).getName());
                 ps.setString(2,rsvps.get(i).getEmail());
